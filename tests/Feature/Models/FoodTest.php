@@ -11,15 +11,13 @@ it('can retrieve users through favourite food', function (Food $food): void {
         ->each->toBeInstanceOf(User::class)
         ->and($food->users->pluck('favourite_food_id'))
         ->each->toEqual($food->getKey());
-})->with([
-    fn() => Food::factory()->has(User::factory(10))->create()
-]);
+})->with([fn () => Food::factory()->has(User::factory(10))->create()]);
 
 it('can create users through favourite food', function (string $name, string $email, string $favouriteFood): void {
     $food = Food::factory()->create(['name' => $favouriteFood]);
 
     $food->users()->create([
-        'name' => $name,
+        'name'  => $name,
         'email' => $email,
     ]);
 

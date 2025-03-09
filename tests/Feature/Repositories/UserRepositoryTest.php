@@ -3,19 +3,25 @@
 use App\Models\Food;
 use App\Models\User;
 use App\Repositories\UserRepository;
+
 use function Pest\Laravel\assertDatabaseHas;
 
 covers(UserRepository::class);
 
-it('can create a new user', function (string $name, string $email, string $favouriteFood) {
-    $food = Food::factory()->create(['name' => $favouriteFood]);
+it('can create a new user', function (
+    string $name,
+    string $email,
+    string $favouriteFood
+) {
+    $food = Food::factory()
+        ->create(['name' => $favouriteFood]);
 
     $user = app(UserRepository::class)
         ->storeUser($name, $email, $food->id);
 
     assertDatabaseHas('users', [
-        'name' => $name,
-        'email' => $email,
+        'name'              => $name,
+        'email'             => $email,
         'favourite_food_id' => $food->id,
     ]);
 
@@ -35,9 +41,9 @@ it(
             ->updateUser($user, $name, $email, $food->id);
 
         assertDatabaseHas('users', [
-            'id' => $user->id,
-            'name' => $name,
-            'email' => $email,
+            'id'                => $user->id,
+            'name'              => $name,
+            'email'             => $email,
             'favourite_food_id' => $food->id,
         ]);
 
@@ -48,7 +54,7 @@ it(
             ->favouriteFood->name->toEqual($favouriteFood);
     }
 )
-    ->with([fn() => User::factory()->create()])
+    ->with([fn () => User::factory()->create()])
     ->with('user data');
 
 it('can update a user without favourite food', function (User $user) {
@@ -58,9 +64,9 @@ it('can update a user without favourite food', function (User $user) {
         ->updateUser($user, 'test', 'test');
 
     assertDatabaseHas('users', [
-        'id' => $user->id,
-        'name' => 'test',
-        'email' => 'test',
+        'id'                => $user->id,
+        'name'              => 'test',
+        'email'             => 'test',
         'favourite_food_id' => $originalFoodId,
     ]);
 
@@ -68,4 +74,4 @@ it('can update a user without favourite food', function (User $user) {
         ->toBeInstanceOf(User::class)
         ->name->toEqual('test')
         ->email->toEqual('test');
-})->with([fn() => User::factory()->create()]);
+})->with([fn () => User::factory()->create()]);

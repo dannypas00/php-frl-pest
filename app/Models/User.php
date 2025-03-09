@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Model
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory;
+//    /** @use HasFactory<UserFactory> */
+//    use HasFactory;
 
     protected $fillable = [
         'name',

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\FoodType;
 use Database\Factories\FoodFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,16 @@ class Food extends Model
 
     protected $fillable = [
         'name',
+        'type',
     ];
+
+    /** @codeCoverageIgnore */
+    protected function casts(): array
+    {
+        return [
+            'type' => FoodType::class,
+        ];
+    }
 
     public function users(): HasMany
     {

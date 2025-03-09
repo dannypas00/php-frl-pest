@@ -1,7 +1,14 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Go pest your code
 
-<p align="center">
-<a href="https://github.com/dannypas00/php-frl-pest/actions"><img src="https://github.com/dannypas00/php-frl-pest/workflows/tests/badge.svg" alt="Build Status"></a>
-</p>
+This is the companion repository for my PHP.frl talk on "Go pest your code".
+This is the project used for all the code snippets for the talk. Here are the steps to get started:
 
-## PHP.frl Pest
+1. Clone the repository
+2. Install and run tests:
+
+```sh
+   composer install
+   php artisan test
+```
+
+3. To update snapshots, run `php artisan test --update-snapshots`

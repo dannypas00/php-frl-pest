@@ -12,3 +12,9 @@ This is the project used for all the code snippets for the talk. Here are the st
 ```
 
 3. To update snapshots, run `php artisan test --update-snapshots`
+
+## Links
+
+- [PHP.frl Meetup](https://www.meetup.com/php-friesland/)
+- [Slides](https://docs.google.com/presentation/d/1GdM3TZp7TNXhK6lChV6XigYqc7pfXA2aV2S-aZJ4r9k/edit?usp=sharing)
+- [Github](https://github.com/dannypas00/php-frl-pest)
